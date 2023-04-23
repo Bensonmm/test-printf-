@@ -1,32 +1,29 @@
-#ifndef MAIN_H
-  2 #define MAIN_H
-  3 #include <stdarg.h>
-  4 #include <stdio.h>
-  5 #include <unistd.h>
-  6
-  7 #define BUFF_SIZE 1024
-  8
-  9
- 10
- 11 /**
- 12  * typedef struct fmt fmt_t - Struct op
- 13  *
- 14  * @fmt: The format.
- 15  * @fm_t: The function associated.
- 16  */
- 17
- 18 typedef struct fmt fmt_t;
- 19
- 20 int _printf(const char *format, ...);
- 21
- 22
- 23 /*functions */
- 24 i
- 25 int custom_b_conversion_specifier(unsigned int arg);
- 26 void binary_converter(unsigned int num);
- 27
- 28
- 29
- 30
- 31
- 32 #endif
+MAIN.H *
+#ifndef MY_PRINTF
+#define MY_PRINTF
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <stdint.h>
+
+
+struct convert
+{
+	char *sym;
+	int (*f)(va_list);
+};
+typedef struct convert conver_t;
+
+
+int _putchar(char c);
+int _printf(const char *format, ...);
+void _vprintf(const char *format, va_list args);
+int parser(const char *format, conver_t funct_list[], va_list args);
+int p_char(va_list);
+int p_string(va_list args);
+int p_percent(va_list);
+int print_unsgined_number(unsigned int n);
+int print_number(va_list);
+int p_integer(va_list);
+#endif
